@@ -96,7 +96,7 @@ export default function BidetCartDrawer({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-ink/75 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink/75 backdrop-blur-xs"
           />
 
           {/* Drawer Panel */}
@@ -146,7 +146,7 @@ export default function BidetCartDrawer({
                     </p>
 
                     <div className="p-5 bg-[#FAF2E8] border border-[#ECD9C5] rounded-2xl w-full text-left font-sans text-xs text-[#5C4533] leading-relaxed mb-8">
-                      💡 <strong>"No more paper towel friction."</strong> Wash happily. A verified confirmation and setup checklist have been dispatched to your imaginary email box.
+                      🚽 <strong>"No more paper towel friction."</strong> Wash happily. A verified confirmation and setup checklist have been dispatched to your imaginary email box.
                     </div>
 
                     <button
@@ -276,7 +276,7 @@ export default function BidetCartDrawer({
                   /* Standard items list and discount coupon block */
                   <div className="space-y-6">
                     <div className="space-y-4">
-                      {cartItems.map((item, index) => (
+                      {cartItems.map((item) => (
                         <div 
                           key={`${item.product.id}-${item.selectedColor}`}
                           className="flex items-start gap-4 p-4 border border-sand/45 rounded-2xl bg-cream hover:border-sand hover:bg-sand/15 transition-all"
@@ -318,7 +318,7 @@ export default function BidetCartDrawer({
 
                           <div className="text-right flex flex-col justify-between items-end h-16 shrink-0">
                             <span className="font-display font-bold text-sm text-bidet-teal">
-                              ${(item.product.price * item.quantity)}
+                              ${item.product.price * item.quantity}
                             </span>
                             
                             <button

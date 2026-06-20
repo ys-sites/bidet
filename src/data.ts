@@ -10,7 +10,7 @@ export const products: Product[] = [
     originalPrice: 129,
     rating: 4.9,
     reviewsCount: 1420,
-    image: '/src/assets/images/bidet_product_attachment_1781917050535.jpg',
+    image: 'https://raw.githubusercontent.com/ys-sites/bidet/main/src/assets/images/bidet_product_attachment_1781917050535.jpg',
     features: [
       'Self-cleaning pressure dual nozzle',
       'Champagne brass metal dial control',
@@ -35,7 +35,7 @@ export const products: Product[] = [
     originalPrice: 349,
     rating: 4.95,
     reviewsCount: 840,
-    image: '/src/assets/images/bidet_product_seat_1781917062094.jpg',
+    image: 'https://raw.githubusercontent.com/ys-sites/bidet/main/src/assets/images/bidet_product_seat_1781917062094.jpg',
     features: [
       'Ultra-slim heated seat with 4 temp levels',
       'Warm-air dryer & soothing deodorizer',
@@ -59,7 +59,7 @@ export const products: Product[] = [
     originalPrice: 79,
     rating: 4.8,
     reviewsCount: 310,
-    image: '/src/assets/images/bidet_product_handheld_1781917072872.jpg',
+    image: 'https://raw.githubusercontent.com/ys-sites/bidet/main/src/assets/images/bidet_product_handheld_1781917072872.jpg',
     features: [
       'Heavy-duty solid brass construction',
       'Precision progressive pressure toggle',
@@ -95,7 +95,7 @@ export const reviews: Review[] = [
     productName: 'LURA Aero',
     verifiedWinner: true,
     avatarLetter: 'D',
-    avatarBg: 'bg-blue-850'
+    avatarBg: 'bg-blue-800'
   },
   {
     id: 'rev-3',

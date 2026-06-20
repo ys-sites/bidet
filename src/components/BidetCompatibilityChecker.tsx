@@ -51,7 +51,7 @@ export default function BidetCompatibilityChecker() {
             </div>
 
             {/* Dynamic visual representation */}
-            <div className="relative w-full max-w-[280px] aspect-square bg-cream rounded-3xl border border-sand flex items-center justify-center p-6 shadow-inner">
+            <div className="relative w-full max-w-[280px] aspect-square bg-cream rounded-3xl border border-sand flex items-center justify-center p-6 shadow-internal">
               {selectedShape === 'round' ? (
                 /* Round Bowl Shape SVG */
                 <svg viewBox="0 0 100 120" className="w-48 h-48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,13 +86,13 @@ export default function BidetCompatibilityChecker() {
                 </svg>
               )}
 
-              <span className="absolute bottom-3 text-[10px] font-sans font-semibold uppercase text-ink-light tracking-widest bg-sand px-2 py-0.5 rounded">
+              <span className="absolute bottom-3 text-[10px] font-sans font-semibold uppercase tracking-widest bg-sand px-2 py-0.5 rounded text-ink-light">
                 Distance from Bolts to Rim
               </span>
             </div>
           </div>
 
-          {/* Right: Explanations \& Compatible Recommendations */}
+          {/* Right: Explanations & Compatible Recommendations */}
           <div className="md:col-span-6 flex flex-col justify-center">
             <div className="flex items-center gap-2 text-bidet-teal font-sans font-bold text-xs uppercase tracking-wider mb-2">
               <Ruler className="w-4 h-4" />
@@ -111,14 +111,14 @@ export default function BidetCompatibilityChecker() {
             <div className="p-5 sm:p-6 bg-cream border border-[#ECD9C5] rounded-2xl flex flex-col justify-between text-left relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-bidet-teal" />
               
-              <h4 className="font-display font-bold text-xs uppercase tracking-widest text-bidet-teal mb-2">
+              <h4 className="font-display font-bold text-xs uppercase tracking-wider text-bidet-teal mb-2">
                 COMPATIBILITY DECISION
               </h4>
 
               {selectedShape === 'round' ? (
                 <div>
                   <p className="font-sans text-xs sm:text-sm text-ink-light leading-relaxed mb-4">
-                    <strong>Pristine Match!</strong> Since your bowl is <strong>Round</strong>, you can use our flagship <strong className="text-ink">LURA Classic Attachment</strong> or the <strong className="text-ink">LURA Wand Handheld Sprayer</strong> perfectly. They install effortlessly in 15 minutes.
+                    <strong>Pristine Match!</strong> Since your bowl is <strong>Round</strong>, you can use our flagship <strong>LURA Classic Attachment</strong> or the <strong>LURA Wand Handheld Sprayer</strong> perfectly. They install effortlessly in 15 minutes.
                   </p>
                   <p className="text-xs text-rose-600/90 font-semibold bg-rose-50/80 p-2.5 rounded-xl border border-rose-200/50 flex items-center gap-2">
                     <Info className="w-4 h-4 shrink-0" />
@@ -128,7 +128,7 @@ export default function BidetCompatibilityChecker() {
               ) : (
                 <div>
                   <p className="font-sans text-xs sm:text-sm text-ink-light leading-relaxed mb-4">
-                    <strong>Wondrous Harmony!</strong> Your bowl shape is <strong className="text-bidet-teal">Elongated</strong>. This means you are completely compatible with <strong>every single item in the LURA lineage</strong> — including our heated luxury powerhouse, the <strong className="text-ink">LURA Aero</strong>!
+                    <strong>Wondrous Harmony!</strong> Your bowl shape is <span className="text-bidet-teal">Elongated</span>. This means you are completely compatible with <strong>every single item in the LURA lineage</strong> — including our heated luxury powerhouse, the <strong>LURA Aero</strong>!
                   </p>
                   <p className="text-xs text-emerald-800 font-semibold bg-emerald-50 p-2.5 rounded-xl border border-emerald-100 flex items-center gap-2">
                     <Check className="w-4 h-4 shrink-0 text-bidet-teal" />

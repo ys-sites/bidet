@@ -15,7 +15,7 @@ export default function BidetHero() {
         <div className="lg:col-span-6 text-left flex flex-col justify-center">
           
           {/* Trust eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-bidet-teal/[0.06] text-bidet-teal rounded-full w-max text-xs font-semibold uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-bidet-teal/[0.06] text-bidet-teal rounded-full w-max text-xs font-semibold tracking-wider uppercase mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-bidet-teal animate-pulse" />
             Over 2.5 Million Buns Cleaned
           </div>
@@ -64,9 +64,9 @@ export default function BidetHero() {
         <div className="lg:col-span-6 relative flex justify-center">
           <div className="relative w-full max-w-[580px] rounded-3xl overflow-hidden shadow-2xl border-4 border-cream bg-sand">
             
-            {/* Visual content from generate_image asset */}
+            {/* Visual content from raw github url */}
             <img 
-              src="/src/assets/images/bidet_hero_bathroom_1781917037105.jpg" 
+              src="https://raw.githubusercontent.com/ys-sites/bidet/main/src/assets/images/bidet_hero_bathroom_1781917037105.jpg" 
               alt="Premium light-filled modern bathroom showing elegant toilet with a bidet attachment" 
               className="w-full h-[320px] sm:h-[480px] object-cover hover:scale-102 transition duration-700"
               referrerPolicy="no-referrer"
@@ -92,6 +92,7 @@ export default function BidetHero() {
               Spa-Grade Restraint
             </div>
           </div>
+
         </div>
 
       </div>

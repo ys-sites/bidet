@@ -1,181 +1,194 @@
-import React, { useState } from 'react';
-import { Check, X, Shield, Sparkles, Zap, Smartphone } from 'lucide-react';
+import React from 'react';
+import { Check, X, Droplet, Star } from 'lucide-react';
 
 export default function BidetComparisonTable() {
-  const models = [
-    { name: 'LURA Classic', tag: 'Best Seller', price: '$99', type: 'Attachment' },
-    { name: 'LURA Aero', tag: 'Luxury Seat', price: '$299', type: 'Heated Seat' },
-    { name: 'LURA Wand', tag: 'Max Versatility', price: '$59', type: 'Handheld' }
-  ];
-
-  const features = [
+  const comparisonData = [
     {
-      name: 'Adjustable Water Pressure',
-      desc: 'Precision control over stream intensity.',
-      classic: 'Analog Dial',
-      aero: 'Digital Panel (5-levels)',
-      wand: 'Progressive Trigger'
-    },
-    {
-      name: 'Water Spray Temperature',
-      desc: 'Warm or ambient cooling water feed.',
-      classic: 'Fresh Ambient',
-      aero: 'Heated Hybrid (4-temps)',
-      wand: 'Fresh Ambient'
-    },
-    {
-      name: 'Self-Cleaning Spray Nozzle',
-      desc: 'Nozzle flushes itself with clean water before & after use.',
+      feature: 'Fresh Ambient Water Wash',
       classic: true,
       aero: true,
-      wand: 'Manual Rinse'
+      wand: true,
+      tp: false
     },
     {
-      name: 'Heated Comfort Seat',
-      desc: 'Heated ring with multi-level temperature control.',
+      feature: 'Heated Temperature Control',
+      classic: false,
+      aero: true, // 4 temp levels
+      wand: false,
+      tp: false
+    },
+    {
+      feature: 'Warm air blow dry (deletes TP completely)',
       classic: false,
       aero: true,
-      wand: false
+      wand: false,
+      tp: false
     },
     {
-      name: 'Integrated Warm-Air Dryer',
-      desc: 'Gentle heated fan allows 100% paperless operation.',
-      classic: false,
-      aero: true,
-      wand: false
-    },
-    {
-      name: 'Power Grid Source',
-      desc: 'Does it require an electrical wall outlet?',
-      classic: 'No Electricity',
-      aero: '120V Outlet Required',
-      wand: 'No Electricity'
-    },
-    {
-      name: 'Dual Front/Rear Nozzles',
-      desc: 'Dedicated spray angles for feminine & masculine cleansing.',
+      feature: 'Dual self-cleaning nozzles',
       classic: true,
       aero: true,
-      wand: 'Single manual aim'
+      wand: false, // Single hand trigger
+      tp: false
     },
     {
-      name: 'LED Path Nightlight',
-      desc: 'Soothes nighttime restroom navigation.',
-      classic: false,
-      aero: 'Ambient Blue LED',
-      wand: false
+      feature: 'Under 15-minute quick setup',
+      classic: true,
+      aero: true,
+      wand: true,
+      tp: true // Well yes, opening a roll takes 2 secs
     },
     {
-      name: 'Install Duration',
-      desc: 'Estimated timeline to complete setup.',
-      classic: '10–15 Minutes',
-      aero: '20 Minutes',
-      wand: '10 Minutes'
+      feature: 'Protects trees & reduces waste by 80%',
+      classic: true,
+      aero: true,
+      wand: true,
+      tp: false
+    },
+    {
+      feature: 'No electricity / wall socket required',
+      classic: true,
+      aero: false, // Heated seat needs power
+      wand: true,
+      tp: true
+    },
+    {
+      feature: 'Smooth water skincare (No wipe abrasion)',
+      classic: true,
+      aero: true,
+      wand: true,
+      tp: false
     }
   ];
-
-  const renderValue = (val: boolean | string) => {
-    if (typeof val === 'boolean') {
-      return val ? (
-        <span className="inline-flex p-1 bg-bidet-teal/[0.08] text-bidet-teal rounded-full">
-          <Check className="w-5 h-5 stroke-[2.5]" />
-        </span>
-      ) : (
-        <span className="inline-flex p-1 bg-rose-50 text-rose-400 rounded-full">
-          <X className="w-4 h-4 stroke-[2.5]" />
-        </span>
-      );
-    }
-    return <span className="text-xs sm:text-sm font-semibold text-ink">{val}</span>;
-  };
 
   return (
     <section id="comparison" className="py-20 px-6 sm:px-12 bg-cream text-ink border-b border-sand relative">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Title */}
+        {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-bidet-teal uppercase font-display text-xs font-bold tracking-[0.2em] bg-bidet-teal/[0.06] py-1 px-3.5 rounded-full inline-block mb-3">
-            TECHNICAL CLARITY
+            TECHNICAL DIAGNOSTICS
           </span>
-          <h2 className="font-display font-medium tracking-tight text-3xl sm:text-5xl text-ink leading-none mt-2 mb-4">
-            Compare model metrics. <br />
-            <span className="italic font-light text-bidet-teal">Zero mysteries.</span>
+          <h2 className="font-display font-medium tracking-tight text-3xl sm:text-5xl text-ink leading-tight">
+            The Wash Down: <br className="hidden sm:block" />
+            <span className="italic font-light text-bidet-blue">How we compare.</span>
           </h2>
-          <p className="font-sans text-sm sm:text-base text-ink-light">
-            Whether you want a high-end automated luxury upgrade or a quick simple setup, compare our hardware side-by-side. Clean and simple.
+          <p className="font-sans text-sm text-ink-light mt-4">
+            A brutally honest feature map between LURA models and the standard prehistoric sheets of dry pulp. No contest.
           </p>
         </div>
 
-        {/* Feature Matrix Board */}
+        {/* Desktop Comparison Table */}
         <div className="overflow-x-auto rounded-3xl border border-sand bg-cream shadow-sm">
-          <table className="w-full min-w-[700px] border-collapse text-left">
+          <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
-              <tr className="border-b border-sand/70 bg-sand/30">
-                {/* Header Feature Empty Slot */}
-                <th className="p-6 w-[280px]">
-                  <div className="flex flex-col text-left">
-                    <span className="font-display font-bold text-xs uppercase text-bidet-teal tracking-widest">WASH MATRIX</span>
-                    <span className="text-xs font-sans text-ink-light mt-1">Select the best wash</span>
-                  </div>
+              <tr className="bg-sand/30 border-b border-sand">
+                <th className="p-6 font-display font-bold text-xs uppercase text-ink-light tracking-wider w-[35%]">
+                  FEATURES & HYGIENE CAPABILITY
                 </th>
-                
-                {/* Model slot elements */}
-                {models.map((mod) => (
-                  <th key={mod.name} className="p-6 text-center border-l border-sand/40">
-                    <div className="flex flex-col items-center">
-                      <span className="px-2.5 py-0.5 rounded-full bg-bidet-blue/[0.08] text-bidet-blue text-[9px] font-bold uppercase tracking-widest mb-2">
-                        {mod.tag}
-                      </span>
-                      <h4 className="font-display text-lg sm:text-xl font-bold text-ink leading-tight">{mod.name}</h4>
-                      <p className="font-sans text-xs text-ink-light font-medium mt-1 uppercase tracking-wider">{mod.type}</p>
-                      <p className="font-display text-xl font-extrabold text-bidet-teal mt-2">{mod.price}</p>
-                    </div>
-                  </th>
-                ))}
+                <th className="p-6 font-display font-bold text-xs uppercase text-bidet-teal tracking-wider text-center bg-bidet-teal/[0.03]">
+                  LURA CLASSIC <br />
+                  <span className="lowercase font-normal text-[11px] text-bidet-teal/80">($99 Attachment)</span>
+                </th>
+                <th className="p-6 font-display font-bold text-xs uppercase text-bidet-blue tracking-wider text-center bg-bidet-blue/[0.03]">
+                  LURA AERO <br />
+                  <span className="lowercase font-normal text-[11px] text-bidet-blue/80">($299 Heated Seat)</span>
+                </th>
+                <th className="p-6 font-display font-bold text-xs uppercase text-ink tracking-wider text-center">
+                  LURA WAND <br />
+                  <span className="lowercase font-normal text-[11px] text-ink-light/85">($59 Sprayer)</span>
+                </th>
+                <th className="p-6 font-display font-bold text-xs uppercase text-ink-light/50 tracking-wider text-center">
+                  TOILET PAPER <br />
+                  <span className="lowercase font-normal text-[11px] text-ink-light/40">($$$ Endlessly)</span>
+                </th>
               </tr>
             </thead>
-            
-            <tbody className="divide-y divide-sand/50">
-              {features.map((feat, index) => (
-                <tr key={index} className="hover:bg-sand/10 transition-colors">
-                  <td className="p-6">
-                    <div className="flex flex-col text-left">
-                      <span className="font-sans font-semibold text-sm text-ink">{feat.name}</span>
-                      <span className="font-sans text-xs text-ink-light mt-0.5">{feat.desc}</span>
-                    </div>
+            <tbody className="divide-y divide-sand">
+              {comparisonData.map((row, index) => (
+                <tr key={index} className="hover:bg-sand/15 transition-colors">
+                  <td className="p-6 font-sans text-sm font-semibold text-ink">
+                    {row.feature}
                   </td>
                   
-                  {/* Classic model status */}
-                  <td className="p-6 text-center border-l border-sand/40">
-                    {renderValue(feat.classic)}
+                  {/* Classic */}
+                  <td className="p-6 text-center bg-bidet-teal/[0.01]">
+                    <div className="flex justify-center">
+                      {row.classic ? (
+                        <span className="p-1 px-2.5 bg-bidet-teal/10 rounded-full text-bidet-teal flex items-center gap-1 text-[11px] font-bold">
+                          <Check className="w-3.5 h-3.5 stroke-[3]" />
+                          Yes
+                        </span>
+                      ) : (
+                        <X className="w-4 h-4 text-ink-light/30" />
+                      )}
+                    </div>
                   </td>
 
-                  {/* Aero model status */}
-                  <td className="p-6 text-center border-l border-sand/40">
-                    {renderValue(feat.aero)}
+                  {/* Aero */}
+                  <td className="p-6 text-center bg-bidet-blue/[0.01]">
+                    <div className="flex justify-center">
+                      {row.aero ? (
+                        <span className="p-1 px-2.5 bg-bidet-blue/10 rounded-full text-bidet-blue flex items-center gap-1 text-[11px] font-bold">
+                          <Check className="w-3.5 h-3.5 stroke-[3]" />
+                          Yes
+                        </span>
+                      ) : (
+                        <X className="w-4 h-4 text-ink-light/30" />
+                      )}
+                    </div>
                   </td>
 
-                  {/* Wand model status */}
-                  <td className="p-6 text-center border-l border-sand/40">
-                    {renderValue(feat.wand)}
+                  {/* Wand */}
+                  <td className="p-6 text-center">
+                    <div className="flex justify-center">
+                      {row.wand ? (
+                        <span className="p-1 px-2.5 bg-sand rounded-full text-ink flex items-center gap-1 text-[11px] font-bold">
+                          <Check className="w-3.5 h-3.5 stroke-[3]" />
+                          Yes
+                        </span>
+                      ) : (
+                        <X className="w-4 h-4 text-ink-light/30" />
+                      )}
+                    </div>
                   </td>
+
+                  {/* Toilet Paper */}
+                  <td className="p-6 text-center">
+                    <div className="flex justify-center">
+                      {row.tp ? (
+                        <span className="p-0.5 px-2 bg-pink-100 rounded text-pink-700 flex items-center gap-1 text-[10px] uppercase font-bold">
+                          Sloppy
+                        </span>
+                      ) : (
+                        <X className="w-4 h-4 text-pink-300" />
+                      )}
+                    </div>
+                  </td>
+
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        {/* Small comparative footer helper */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-ink-light">
-          <div className="flex items-center gap-1.5 font-sans">
-            <Shield className="w-4 h-4 text-bidet-teal" />
-            <span>All models covered by 1-year product warranty</span>
+        {/* Footnote statement */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between p-6 bg-sand/30 rounded-2xl border border-sand gap-4 text-left">
+          <div className="flex items-center gap-3">
+            <span className="p-1.5 bg-bidet-teal text-cream rounded-xl">
+              <Droplet className="w-4 h-4 fill-current" />
+            </span>
+            <p className="text-xs sm:text-sm text-ink-light leading-snug">
+              <strong>All LURA attachments & Seats</strong> connect seamlessly right to your clean, fresh water mains flow. They do NOT utilize the water currently resting inside your toilet tank. Clean water for clean humans.
+            </p>
           </div>
-          <div className="flex items-center gap-1.5 font-sans">
-            <Zap className="w-4 h-4 text-bidet-teal" />
-            <span>FDA & HSA/FSA reimbursement compliant (check with provider)</span>
-          </div>
+          <a 
+            href="#shop-grid" 
+            className="py-2.5 px-5 bg-bidet-teal hover:bg-bidet-blue text-cream text-[11px] font-bold uppercase rounded-lg shadow-sm tracking-wide shrink-0 transition"
+          >
+            Upgrade Bathroom
+          </a>
         </div>
 
       </div>

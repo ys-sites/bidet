@@ -26,7 +26,7 @@ export default function BidetInstallConfidence() {
       )
     },
     {
-      title: '2. Attach the Brass T-Valve',
+      title: '2. Attach the Brass T-Value',
       sub: 'Time elapsed: 8 Mins',
       description: 'Shut off the tiny water valve under your tank (turn clockwise). Connect our premium, thick solid brass T-adapter to the base of the tank. Clip on our stainless steel braided hose. It handles heavy water pressure effortlessly.',
       wittyCaption: 'Toolbox status: Everything you need of metal fittings is right in the box. Keep your wrench in the drawer.',
@@ -74,7 +74,7 @@ export default function BidetInstallConfidence() {
             <span className="italic font-light text-bidet-teal">Zero anxiety.</span>
           </h2>
           <p className="font-sans text-sm sm:text-base text-ink-light">
-            We values your personal sanity above anything else. Our bidets are crafted to configure natively on your existing setups in less than 20 minutes.
+            We value your personal sanity above anything else. Our bidets are crafted to configure natively on your existing setups in less than 20 minutes.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export default function BidetInstallConfidence() {
                   
                   <div className="text-left">
                     <h4 className="font-display font-bold text-sm text-ink">{stp.title}</h4>
-                    <p className="text-xs text-bidet-teal font-semibold font-sans mt-0.5 uppercase tracking-wider">{stp.sub}</p>
+                    <p className="text-xs text-bidet-teal font-semibold font-sans mt-0.5 uppercase tracking-wide">{stp.sub}</p>
                   </div>
                 </button>
               );
@@ -149,13 +149,13 @@ export default function BidetInstallConfidence() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <p className="font-sans text-sm sm:text-base text-ink-light leading-relaxed leading-[22px] mb-6">
+                    <p className="font-sans text-sm sm:text-base text-ink-light leading-relaxed mb-6">
                       {steps[activeStep].description}
                     </p>
 
                     {/* Witty bidet quote */}
                     <p className="text-xs italic text-bidet-teal bg-bidet-teal/[0.04] p-3 rounded-xl border border-bidet-teal/10 inline-block font-sans">
-                      💡 {steps[activeStep].wittyCaption}
+                      🚽 {steps[activeStep].wittyCaption}
                     </p>
                   </motion.div>
                 </AnimatePresence>
@@ -163,7 +163,7 @@ export default function BidetInstallConfidence() {
 
               {/* Direction tools control bar */}
               <div className="flex justify-between items-center border-t border-sand/60 pt-6 mt-8">
-                <span className="font-sans text-xs text-ink-light">
+                <span className="font-sans text-xs text-ink-light leading-snug">
                   Simple box includes: T-valve, Teflon anti-leak tape, stainless-steel mesh pipe, setup keys.
                 </span>
                 

@@ -1,154 +1,88 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Star, Heart, CheckCircle, Quote } from 'lucide-react';
+import React from 'react';
 import { reviews } from '../data';
-import { motion, AnimatePresence } from 'motion/react';
+import { Star, ShieldCheck, Heart } from 'lucide-react';
 
 export default function BidetSocialProof() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % reviews.length);
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-  };
-
-  const stats = [
-    { number: '2.5M+', text: 'Happy Buns Cleaned', caption: 'And counting every single second.' },
-    { number: '85%', text: 'Fewer Trees Flushed', caption: 'Keeping old growth where it belongs.' },
-    { number: '$280', text: 'Average Yearly Savings', caption: 'Diverted back into actual bank accounts.' },
-    { number: '15,000+', text: 'Verified 5-Star Reviews', caption: 'Direct from grateful ceramic thrones.' }
-  ];
-
   return (
-    <section id="reviews" className="py-20 px-6 sm:px-12 bg-cream text-ink border-b border-sand overflow-hidden relative">
-      <div className="absolute top-1/4 right-[5%] w-72 h-72 rounded-full bg-bidet-blue/[0.02] blur-3xl pointer-events-none" />
-
+    <section id="reviews" className="py-20 px-6 sm:px-12 bg-[#FAF8F5] text-ink border-b border-sand relative">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Head */}
+        {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-bidet-teal uppercase font-display text-xs font-bold tracking-[0.2em] bg-bidet-teal/[0.06] py-1 px-3.5 rounded-full inline-block mb-3">
-            VERIFIED SOCIAL PROOF
+            VERIFIED CRITIQUES
           </span>
-          <h2 className="font-display font-medium tracking-tight text-3xl sm:text-5xl text-ink leading-none mt-2 mb-4">
-            Hear it straight from <br />
-            <span className="italic font-light text-bidet-blue">our pristine community.</span>
+          <h2 className="font-display font-medium tracking-tight text-3xl sm:text-5xl text-ink leading-tight">
+            Hear from our <br className="hidden sm:block" />
+            <span className="italic font-light text-bidet-teal">newly converted.</span>
           </h2>
-          <p className="font-sans text-sm sm:text-base text-ink-light">
-            We don’t like to boast, but our community speaks with absolute conviction. Discover why switching to water is a point of no return.
+          <p className="font-sans text-sm text-ink-light mt-4">
+            Witty toilet reviews from real, actual humans who threw away their wet wipes and discovered true, water-based inner peace.
           </p>
         </div>
 
-        {/* Playful & Credible Statistics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-20">
-          {stats.map((stat, idx) => (
+        {/* Review Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {reviews.map((rev) => (
             <div 
-              key={idx}
-              className="p-6 sm:p-8 bg-sand/30 border border-sand/60 rounded-3xl text-left flex flex-col justify-between"
+              key={rev.id}
+              className="bg-cream p-6 sm:p-8 rounded-3xl border border-sand shadow-xs text-left hover:shadow-md transition-shadow flex flex-col justify-between"
             >
               <div>
-                <p className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[45px] text-bidet-teal leading-none mb-2">
-                  {stat.number}
+                {/* Score / Product name info */}
+                <div className="flex items-center gap-1 mb-2.5 text-amber-500">
+                  {[...Array(rev.rating)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-current text-bidet-blue" />
+                  ))}
+                </div>
+
+                <p className="font-sans text-xs sm:text-sm text-ink-light leading-relaxed mb-6 italic">
+                  "{rev.text}"
                 </p>
-                <h4 className="font-sans font-bold text-sm text-ink mb-1">
-                  {stat.text}
-                </h4>
               </div>
-              <p className="font-sans text-xs text-ink-light mt-2 leading-relaxed">
-                {stat.caption}
-              </p>
+
+              {/* Author box */}
+              <div className="flex items-center gap-3 pt-4 border-t border-sand/35">
+                <div className={`w-8 h-8 rounded-full ${rev.avatarBg} text-cream flex items-center justify-center text-xs font-bold`}>
+                  {rev.avatarLetter}
+                </div>
+                <div className="leading-tight">
+                  <h5 className="font-display font-bold text-xs text-ink flex items-center gap-1.5">
+                    {rev.author}
+                    {rev.verifiedWinner && (
+                      <span className="p-0.5 bg-bidet-teal/10 rounded-full text-bidet-teal" title="Verified Fresh Customer">
+                        <ShieldCheck className="w-3 h-3 stroke-[2.5]" />
+                      </span>
+                    )}
+                  </h5>
+                  <p className="text-[10px] text-ink-light/65 font-sans mt-0.5">
+                    {rev.productName}
+                  </p>
+                </div>
+              </div>
+
             </div>
           ))}
         </div>
 
-        {/* Dynamic Reviews Carousel Box */}
-        <div className="max-w-[760px] mx-auto bg-cream border border-sand rounded-3xl p-8 sm:p-14 shadow-md relative">
-          
-          {/* Quote water-marker */}
-          <div className="absolute top-8 right-8 text-sand/60 select-none">
-            <Quote className="w-14 h-14" />
+        {/* Fun stats banner */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-sand/55 text-center">
+          <div>
+            <h4 className="font-display font-extrabold text-3xl sm:text-4xl text-bidet-teal">99.8%</h4>
+            <p className="text-xs uppercase font-bold tracking-wider text-ink-light mt-1">SASSY ASS SATISFACTION</p>
+            <p className="text-[11px] text-ink-light/70 font-sans mt-0.5">Who ever went back to dry pulp?</p>
           </div>
-
-          <div className="relative min-h-[220px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.35 }}
-                className="text-left flex flex-col justify-between h-full"
-              >
-                <div>
-                  {/* Stars block */}
-                  <div className="flex text-amber-500 gap-1 mb-6">
-                    {[...Array(reviews[activeIndex].rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current text-bidet-blue" />
-                    ))}
-                  </div>
-
-                  {/* Review Text */}
-                  <p className="font-sans text-base sm:text-lg text-ink leading-relaxed mb-8">
-                    "{reviews[activeIndex].text}"
-                  </p>
-                </div>
-
-                {/* Author Info block */}
-                <div className="flex items-center justify-between border-t border-sand/50 pt-6">
-                  <div className="flex items-center gap-4">
-                    <div className={`w-11 h-11 ${reviews[activeIndex].avatarBg} text-cream font-display font-bold text-sm rounded-full flex items-center justify-center`}>
-                      {reviews[activeIndex].avatarLetter}
-                    </div>
-                    <div>
-                      <h4 className="font-sans font-bold text-sm text-ink">
-                        {reviews[activeIndex].author}
-                      </h4>
-                      <p className="font-sans text-xs text-ink-light leading-none mt-1">
-                        Model: {reviews[activeIndex].productName}
-                      </p>
-                    </div>
-                  </div>
-
-                  {reviews[activeIndex].verifiedWinner && (
-                    <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-bidet-teal/[0.06] text-bidet-teal rounded-full text-xs font-semibold uppercase tracking-wider">
-                      <CheckCircle className="w-3.5 h-3.5" />
-                      Verified Purchaser
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+          <div>
+            <h4 className="font-display font-extrabold text-3xl sm:text-4xl text-bidet-blue">15 Million</h4>
+            <p className="text-xs uppercase font-bold tracking-wider text-ink-light mt-1">TREES PRESERVED</p>
+            <p className="text-[11px] text-ink-light/70 font-sans mt-0.5">Targeted cumulative community tree count</p>
           </div>
-
-          {/* Carousel Arrows */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3">
-            <button 
-              onClick={handlePrev}
-              className="p-3 bg-cream border border-sand hover:bg-sand/30 rounded-full cursor-pointer transition text-ink hover:text-bidet-teal shadow-md flex items-center justify-center"
-              aria-label="Previous Review"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <span className="text-xs font-bold text-ink-light font-sans bg-cream border border-sand px-3 py-1.5 rounded-full shadow-inner">
-              {activeIndex + 1} / {reviews.length}
-            </span>
-            <button 
-              onClick={handleNext}
-              className="p-3 bg-cream border border-sand hover:bg-sand/30 rounded-full cursor-pointer transition text-ink hover:text-bidet-teal shadow-md flex items-center justify-center"
-              aria-label="Next Review"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+          <div>
+            <h4 className="font-display font-extrabold text-3xl sm:text-4xl text-ink">Under 15m</h4>
+            <p className="text-xs uppercase font-bold tracking-wider text-ink-light mt-1">AVERAGE ASSEMBLY TIME</p>
+            <p className="text-[11px] text-ink-light/70 font-sans mt-0.5">Just a standard adapter clip click</p>
           </div>
-
         </div>
-
-        {/* Sincere footnote */}
-        <p className="text-center text-xs text-ink-light/70 font-sans mt-14">
-          All reviews represent authentic feedback written by real humans who spent real capital to scrub their buns.
-        </p>
 
       </div>
     </section>

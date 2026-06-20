@@ -25,7 +25,7 @@ export default function BidetFooter() {
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div className="space-y-6">
             <a href="#" className="flex items-center gap-2 group font-display tracking-[0.1em] text-2xl font-bold uppercase transition">
-              <span className="p-2.5 bg-bidet-teal text-cream rounded-xl">
+              <span className="p-2 bg-bidet-teal text-cream rounded-xl">
                 <Droplet className="w-5 h-5 fill-current" />
               </span>
               <span className="text-cream">LURA</span>
@@ -125,9 +125,9 @@ export default function BidetFooter() {
           <span>© 2026 LURA Personal Hygiene Inc. All rights of bums preserved.</span>
           <div className="flex gap-4 justify-center sm:justify-start mt-2">
             <a href="#" className="hover:text-cream transition-colors">Privacy Charter</a>
-            <span>·</span>
+            <span>•</span>
             <a href="#" className="hover:text-cream transition-colors">Buns Terms of Service</a>
-            <span>·</span>
+            <span>•</span>
             <a href="#" className="hover:text-cream transition-colors">Cookie Diagnostics</a>
           </div>
         </div>

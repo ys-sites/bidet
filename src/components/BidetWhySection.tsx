@@ -1,5 +1,4 @@
 import React from 'react';
-import { Droplet, Leaf, PiggyBank, Smile } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function BidetWhySection() {
@@ -11,8 +10,8 @@ export default function BidetWhySection() {
       icon: (
         <svg viewBox="0 0 100 100" className="w-16 h-16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="45" fill="#224E44" fillOpacity="0.08" />
-          <path d="M50 25C50 25 32 45 32 58C32 67.9411 40.0589 76 50 76C59.9411 76 68 67.9411 68 58C68 45 50 25 50 25Z" fill="#224E44" />
-          <path d="M46 45C46 45 36 56 36 62C36 67.5 40 70 46 70C52 70 54 67.5 54 62C54 56 46 45 46 45Z" fill="#3E6FA5" fillOpacity="0.8" />
+          <path d="M50 25C50 25 32 45 32 58C32 67.9411 40.0589 76 50 76C59.9411 76 68 67.9411 68 58C68 45 50 25 50 25Zi" fill="#224E44" />
+          <path d="M46 45C46 45 36 56 36 62C36 67.5 40 70 46 70C52 70 54 67.5 54 62C54 56 46 45 46 45Zi" fill="#3E6FA5" fillOpacity="0.8" />
           <circle cx="70" cy="30" r="5" fill="#3E6FA5" />
           <circle cx="28" cy="35" r="3" fill="#EEDEC9" />
         </svg>
@@ -113,7 +112,7 @@ export default function BidetWhySection() {
 
               {/* Unique witty caption highlighting premium tone */}
               <div className="mt-auto pt-4 border-t border-sand/50 w-full">
-                <span className="block text-[11px] font-bold text-bidet-teal uppercase tracking-wide leading-tight">
+                <span className="block text-[11px] font-bold text-bidet-teal uppercase tracking-wide leading-none">
                   PRO STATUS
                 </span>
                 <span className="text-xs text-ink italic leading-tight mt-1 inline-block">

@@ -17,10 +17,10 @@ export default function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   // Add Item to E-commerce Cart state
-  const handleAddToCart = (product: Product, color: string) => {
+  const handleAddToCart = (product: Product, color: string, selectedToiletShape?: 'round' | 'elongated') => {
     setCartItems((prevItems) => {
       const matchIdx = prevItems.findIndex(
-        (item) => item.product.id === product.id && item.selectedColor === color
+        (item) => item.product.id === product.id && item.selectedColor === color && item.selectedToiletShape === selectedToiletShape
       );
 
       if (matchIdx >= 0) {
@@ -31,7 +31,7 @@ export default function App() {
         };
         return cloned;
       } else {
-        return [...prevItems, { product, quantity: 1, selectedColor: color }];
+        return [...prevItems, { product, quantity: 1, selectedColor: color, selectedToiletShape }];
       }
     });
 
@@ -115,7 +115,7 @@ export default function App() {
           <span className="p-1.5 bg-bidet-teal text-cream rounded-lg">
             <Sparkles className="w-3.5 h-3.5" />
           </span>
-          <span>Wash Happily. Use code <strong className="text-bidet-blue">FRESHBUTT</strong> for 15% off coupon savings!</span>
+          <span>Wash Happily. Use code <strong className="text-bidet-blue font-bold">FRESHBUTT</strong> for 15% off coupon savings!</span>
         </div>
         
         <a 
