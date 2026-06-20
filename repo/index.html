@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/ALLBALL_logo.svg" />
+  <title>Centre AllBall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <!-- Preconnect to Cloudinary CDN to eliminate DNS/TLS round-trip delay for the hero video -->
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+</head>
+<body>
+
+  <!-- Global SVG distortion filter -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <filter id="lg-distort" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.004 0.008" numOctaves="1" result="turbulence"/>
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="35" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <!-- Logo -->
+    <a href="#hero-section" class="nav-logo">
+      <img class="nav-logo-img" src="/logo.png" alt="ALLBALL Logo" style="height: 48px; width: auto; object-fit: contain; display: block;" />
+      ALLBALL
+    </a>
+
+    <!-- Nav links in pill wrapper -->
+    <div class="nav-links-wrapper">
+      <div class="nav-links">
+        <a href="#how-section" data-i18n="nav_how">How it works</a>
+        <a href="#services-section" data-i18n="nav_programs">Programs</a>
+        <a href="#kids-section" data-i18n="nav_coaches">Coaches</a>
+        <a href="#location-section" data-i18n="nav_locations">Locations</a>
+        <a href="#faq-section" data-i18n="nav_faq">FAQ</a>
+      </div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="lang-selector">
+      <button class="lang-btn active" id="lang-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="lang-fr" data-lang="fr">FR</button>
+    </div>
+
+    <!-- CTA Button -->
+    <button class="nav-cta-btn" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="nav_cta">Book Now →</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero-section" style="position: relative; overflow: hidden;">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.65; will-change: transform;"
+    >
+      <source src="https://res.cloudinary.com/dzgmvz6tc/video/upload/so_3,eo_38/YTDown_YouTube_Cinematic-Sports-Video-Basketball-Shoot-_Media_tWU8CXFLOgk_001_1080p_mdimk2.mp4" type="video/mp4" />
+    </video>
+    <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%); z-index: 1;"></div>
+
+    <!-- Product Hunt Badge (Removed for AllBall context) -->
+
+    <!-- Event Cards Wrapper -->
+    <div class="hero-cards-wrapper">
+      <!-- Kirkland Card -->
+      <div class="event-card">
+        <div class="ec-bend"></div>
+        <div class="ec-face"></div>
+        <div class="ec-edge"></div>
+        <div class="ec-content">
+          <!-- Photo -->
+          <div class="ec-photo">
+            <img
+              src="/AllBall.jpeg"
+              alt="Kirkland court"
+              decoding="async"
+              loading="eager"
+            />
+            <div class="ec-photo-shade"></div>
+            <div class="ec-photo-overlay-top">
+              <span class="ec-pill ec-pill-live">61 reviews</span>
+            </div>
+            <div class="ec-photo-overlay-bottom">
+              <h3 class="ec-title">Centre AllBall</h3>
+              <p class="ec-date">Sports complex - Kirkland</p>
+            </div>
+          </div>
+
+          <!-- Venue Block -->
+          <div class="ec-venue">
+            <span class="ec-venue-name">3280 Jean Yves St</span>
+            <span class="ec-venue-addr">Montreal, Quebec H9J 4C1</span>
+          </div>
+          
+          <div class="ec-venue" style="border-top: none; padding-top: 0;">
+            <span class="ec-venue-addr">Open today: 9 a.m.–12 a.m.</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="ec-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=3280+Jean+Yves+St+Montreal+Quebec+H9J+4C1" target="_blank" rel="noopener" class="btn-ghost">Directions</a>
+            <a href="tel:+15145185061" class="btn-dark">Call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vaudreuil Card -->
+      <div class="event-card">
+        <div class="ec-bend"></div>
+        <div class="ec-face"></div>
+        <div class="ec-edge"></div>
+        <div class="ec-content">
+          <!-- Photo -->
+          <div class="ec-photo">
+            <img
+              src="/vaudreuil_court.png"
+              alt="Vaudreuil court"
+              decoding="async"
+              loading="eager"
+            />
+            <div class="ec-photo-shade"></div>
+            <div class="ec-photo-overlay-top">
+              <span class="ec-pill ec-pill-live" style="background: #ea580c; color: white;">NEW LOCATION</span>
+            </div>
+            <div class="ec-photo-overlay-bottom">
+              <h3 class="ec-title">Centre AllBall</h3>
+              <p class="ec-date">Sports complex - Vaudreuil</p>
+            </div>
+          </div>
+
+          <!-- Venue Block -->
+          <div class="ec-venue">
+            <span class="ec-venue-name">3660 Boul de la Cité-des-Jeunes</span>
+            <span class="ec-venue-addr">Vaudreuil-Dorion, QC J7V 8P2</span>
+          </div>
+          
+          <div class="ec-venue" style="border-top: none; padding-top: 0;">
+            <span class="ec-venue-addr">Open today: 9 a.m.–12 a.m.</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="ec-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=3660+Boul+de+la+Cite-des-Jeunes+Vaudreuil-Dorion+QC+J7V+8P2" target="_blank" rel="noopener" class="btn-ghost">Directions</a>
+            <a href="tel:+15145185061" class="btn-dark">Call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Text -->
+    <div id="hero-text">
+      <p class="eyebrow" style="color: rgba(255,255,255,0.8); text-shadow: 0 2px 10px rgba(0,0,0,0.8);" data-i18n="hero_eyebrow">TRAINING SESSIONS FOR KIDS</p>
+      <h1 class="hero-headline" style="color: white; mix-blend-mode: normal; text-shadow: 0 8px 30px rgba(0,0,0,0.8); line-height: 1;">
+        <span class="hl-line shiny-title light" data-i18n="hero_line1">MONTREAL'S</span>
+        <span class="hl-line shiny-title light" data-i18n="hero_line2">PREMIER COURT</span>
+      </h1>
+      <p class="hero-brand" style="color: rgba(255,255,255,0.9); text-shadow: 0 2px 10px rgba(0,0,0,0.8);" data-i18n="hero_brand">CENTRE ALLBALL</p>
+      <div class="pricing-strip glass-pill">
+        <span class="pricing-text" data-i18n="hero_ready">Ready to play?</span>
+        <button class="btn-dark-sm" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="hero_cta">Book a Court →</button>
+      </div>
+      <!-- Social Media Strip -->
+      <div class="hero-social-strip">
+        <a href="https://www.facebook.com/allballmtl" target="_blank" rel="noopener" class="hero-social-btn" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/allballmtl/" target="_blank" rel="noopener" class="hero-social-btn" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@allballmtl" target="_blank" rel="noopener" class="hero-social-btn" aria-label="TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89h.6V9.12h-.6a6.33 6.33 0 1 0 6.33 6.33V7.94a7.92 7.92 0 0 0 4.47 1.33V5.65a4.83 4.83 0 0 1-0.65-0.05z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Signature SVG -->
+    <div id="sig-wrap">
+      <svg class="signature-svg" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="sp1" d="M10,60 C30,10 60,70 90,30 C110,5 130,55 160,25" stroke="#111111" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path class="sp2" d="M20,70 C50,40 80,65 120,45 C145,32 165,50 190,35" stroke="#ea580c" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path class="sp3" d="M15,75 Q60,55 100,65 Q140,75 185,60" stroke="#555555" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text" data-i18n="hero_scroll">scroll</span>
+    </div>
+
+    <!-- Drag hint removed from hero -->
+
+    <!-- Vertical brand logo (laptop+) -->
+    <div class="hero-vertical-logo" aria-hidden="true">
+      <span>ALLBALL</span>
+    </div>
+
+  </section>
+
+  <!-- STATS SECTION -->
+  <section id="stats-section" style="position: relative;">
+    <!-- CANVAS REPOSITIONED HERE -->
+    <canvas id="ball-canvas"></canvas>
+    
+    <!-- Drag hint -->
+    <div class="drag-hint" style="bottom: 2rem; color: var(--ink-faint);" data-i18n="stats_canvas_drag">↔ drag to spin</div>
+    
+    <div class="stats-bg-text">COURT</div>
+    <div class="stats-left" style="pointer-events: none;">
+      <p class="eyebrow reveal-blur" data-i18n="stats_eyebrow">OUR IMPACT</p>
+      <h2 class="section-headline shiny-title dark reveal-blur" data-i18n="stats_title">ELEVATE<br>THEIR GAME.</h2>
+      <p class="section-body reveal-blur" data-i18n="stats_body">Montreal's premier destination for youth basketball training and development. We focus on fundamentals, teamwork, and love for the game.</p>
+      <div class="stats-grid">
+        <div class="stat-card glass-card">
+          <span class="stat-num" data-i18n="stat1_num">500+</span>
+          <span class="stat-label" data-i18n="stat1_label">Youth Players</span>
+          <span class="stat-delta delta-up" data-i18n="stat1_delta">↑ Growing community</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-num" data-i18n="stat2_num">4.3★</span>
+          <span class="stat-label" data-i18n="stat2_label">Google Reviews</span>
+          <span class="stat-delta delta-up" data-i18n="stat2_delta">↑ 61 happy parents</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-num" data-i18n="stat3_num">5</span>
+          <span class="stat-label" data-i18n="stat3_label">Expert Coaches</span>
+          <span class="stat-delta delta-neutral" data-i18n="stat3_delta">→ Elite experience</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-num" data-i18n="stat4_num">7 Days</span>
+          <span class="stat-label" data-i18n="stat4_label">Open A Week</span>
+          <span class="stat-delta delta-up" data-i18n="stat4_delta">↑ Flexible scheduling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-section">
+    <div class="how-bg-text" style="display: none;">PLAY</div>
+
+    <!-- LEFT HAND SIDE POSTER -->
+    <div class="poster-graphic" style="position: relative; container-type: inline-size; background-color: #0a0a0a; width: 100%; max-width: 580px; border-radius: 6px; aspect-ratio: 4/5; overflow: hidden; color: #ffffff; box-shadow: 0 30px 60px rgba(0,0,0,0.15); flex: 1; align-self: center;">
+      <!-- Cloudinary Video Embed -->
+      <iframe class="poster-video" src="https://player.cloudinary.com/embed/?cloud_name=dzgmvz6tc&public_id=AQM3CfBKsaqFG1GXCLUy_ILIWgUNBkpLSnV952rvI7FASXvgetcVpnyUideFTQofWCPvD-znSBO3cwXwmYvzJ0RDMARd7U60kcM8ic0_jfjuvj" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+    </div>
+
+    <div class="how-content" style="flex: 1;">
+      <p class="eyebrow reveal-blur" data-i18n="how_eyebrow">HOW IT WORKS</p>
+      <h2 class="section-headline shiny-title dark reveal-blur" data-i18n="how_title">THREE STEPS<br>TO THE COURT</h2>
+      <div class="steps-list">
+        <div class="step-item glass-card">
+          <span class="step-num" data-i18n="step1_num">01</span>
+          <div class="step-info">
+            <h3 class="step-title" data-i18n="step1_title">Pick a Service</h3>
+            <p class="step-desc" data-i18n="step1_desc">Whether it's a birthday party, training clinic, or casual drop-in, choose what fits your game today.</p>
+          </div>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="step-item glass-card">
+          <span class="step-num" data-i18n="step2_num">02</span>
+          <div class="step-info">
+            <h3 class="step-title" data-i18n="step2_title">Choose a Time</h3>
+            <p class="step-desc" data-i18n="step2_desc">Browse our live schedule and secure your slot instantly. No phone tag, no hassle.</p>
+          </div>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="step-item glass-card">
+          <span class="step-num" data-i18n="step3_num">03</span>
+          <div class="step-info">
+            <h3 class="step-title" data-i18n="step3_title">Show Up & Play</h3>
+            <p class="step-desc" data-i18n="step3_desc">Bring your gear and your A-game. Our courts are prepped and ready for you when you walk in.</p>
+          </div>
+          <span class="step-arrow">→</span>
+        </div>
+      </div>
+      <div class="how-cta-row">
+        <button class="btn-dark-lg" data-i18n="how_cta" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})">Book Now →</button>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    body { padding-bottom: 90px; }
+    .new-section { padding: 8rem 2.5rem; position: relative; max-width: 1200px; margin: 0 auto; }
+    .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .flex-split { display: flex; flex-direction: column; gap: 4rem; align-items: center; }
+    @media(min-width: 768px) {
+      .flex-split { flex-direction: row; }
+      .flex-split > * { flex: 1; }
+    }
+    @media(max-width: 1024px) {
+      #how-section .poster-graphic { margin-bottom: 3rem; }
+    }
+    .tier-card { display: flex; flex-direction: column; gap: 1rem; padding: 2.5rem; }
+    .tier-price { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; color: var(--ink); }
+    .tier-list { list-style: none; padding: 0; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.8rem; color: var(--ink-faint); }
+    .tier-list li { display: flex; gap: 0.5rem; align-items: flex-start; }
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 1.5rem 0; cursor: pointer; }
+    .faq-q { color: var(--ink); font-weight: 500; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center; }
+    .faq-a { color: var(--ink-muted); line-height: 1.6; max-height: 0; overflow: hidden; opacity: 0; margin-top: 0; transition: max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), margin-top 0.35s ease, opacity 0.35s ease; }
+    .faq-item.active .faq-a { max-height: 150px; opacity: 1; margin-top: 1rem; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); transition: transform 0.3s ease; }
+    .faq-icon { font-size: 1.5rem; transition: transform 0.3s ease; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 600px; margin: 0 auto; }
+    .contact-input { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.12); padding: 1rem; color: var(--ink); border-radius: 8px; font-family: 'Inter', sans-serif; resize: vertical; transition: border-color 0.3s, background 0.3s; }
+    .contact-input:focus { outline: none; border-color: #ea580c; background: rgba(0,0,0,0.04); }
+    .contact-input::placeholder { color: var(--ink-faint); }
+    .contact-select { appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230d0d0d%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto; }
+  </style>
+
+  <!-- SERVICES GRID -->
+  <section id="services-section" class="new-section">
+    <p class="eyebrow reveal-blur" style="text-align: center;" data-i18n="services_eyebrow">OUR OFFERINGS</p>
+    <h2 class="section-headline shiny-title dark reveal-blur" style="text-align: center; margin-bottom: 4rem;" data-i18n="services_title">PROGRAMS &<br>RENTALS.</h2>
+    <div class="grid-auto">
+      <div class="glass-card tier-card">
+        <h3 class="shiny-title dark" style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--ink);" data-i18n="service1_title">Drop-in Play</h3>
+        <p style="color: var(--ink-faint); flex-grow: 1;" data-i18n="service1_desc">Show up, shoot around, or run 5v5s. Perfect for casual players looking for high-quality hardwood.</p>
+        <button class="btn-ghost" style="align-self: flex-start;" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="service1_cta">See Hours</button>
+      </div>
+      <div class="glass-card tier-card">
+        <h3 class="shiny-title dark" style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--ink);" data-i18n="service2_title">Kids Clinics</h3>
+        <p style="color: var(--ink-faint); flex-grow: 1;" data-i18n="service2_desc">Structured group training focusing on basketball fundamentals for ages 6-14.</p>
+        <button class="btn-ghost" style="align-self: flex-start;" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="service2_cta">View Schedule</button>
+      </div>
+      <div class="glass-card tier-card">
+        <h3 class="shiny-title dark" style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--ink);" data-i18n="service3_title">Private Training</h3>
+        <p style="color: var(--ink-faint); flex-grow: 1;" data-i18n="service3_desc">1-on-1 coaching for accelerated skill development, tailored specifically to your game.</p>
+        <button class="btn-ghost" style="align-self: flex-start;" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="service3_cta">Find a Coach</button>
+      </div>
+      <div class="glass-card tier-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto; width: 100%;">
+        <h3 class="shiny-title dark" style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--ink);" data-i18n="service4_title">Team Rentals</h3>
+        <p style="color: var(--ink-faint);" data-i18n="service4_desc">Need a consistent court for your squad? Rent standard or full-sized courts for team practices and scrimmages.</p>
+        <button class="btn-ghost" style="align-self: flex-start;" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="service4_cta">Inquire Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIRTHDAY PARTIES -->
+  <section id="birthday-section" style="background: rgba(0,0,0,0.02); border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="new-section flex-split">
+      <div>
+        <p class="eyebrow reveal-blur" data-i18n="birthday_eyebrow">UNFORGETTABLE MEMORIES</p>
+        <h2 class="section-headline shiny-title dark reveal-blur" style="font-size: clamp(3rem, 8vw, 5rem);" data-i18n="birthday_title">BIRTHDAY<br>PARTIES.</h2>
+        <p class="section-body reveal-blur" data-i18n="birthday_body">Celebrate their big day on the court. Our party packages take care of everything so you can actually enjoy the moment.</p>
+        <ul class="tier-list" style="color: var(--ink); font-size: 1.1rem; margin-bottom: 3rem;">
+          <li><span style="color: #ea580c;">✓</span> <span data-i18n="birthday_item1">90 Minutes of Court Time</span></li>
+          <li><span style="color: #ea580c;">✓</span> <span data-i18n="birthday_item2">Private Party Room</span></li>
+          <li><span style="color: #ea580c;">✓</span> <span data-i18n="birthday_item3">Dedicated Party Host/Ref</span></li>
+          <li><span style="color: #ea580c;">✓</span> <span data-i18n="birthday_item4">Setup & Clean up included</span></li>
+        </ul>
+        <button class="btn-dark-lg" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="birthday_cta">Inquire About Dates →</button>
+      </div>
+      <div style="position: relative; border-radius: 2rem; overflow: hidden; aspect-ratio: 4/5; width: 100%; max-width: 500px;">
+        <img src="/kids-playing.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Kids playing basketball" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+        <div class="glass-pill" style="position: absolute; bottom: 2rem; left: 2rem; right: 2rem; padding: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);">
+          <span style="color: white; font-weight: bold; font-style: italic;" data-i18n="birthday_quote">"The easiest party we've ever hosted!"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KIDS PROGRAMS & COACHES -->
+  <section id="kids-section" class="new-section">
+    <p class="eyebrow reveal-blur" style="text-align: center;" data-i18n="coaches_eyebrow">EXPERT GUIDANCE</p>
+    <h2 class="section-headline shiny-title dark reveal-blur" style="text-align: center; margin-bottom: 4rem;" data-i18n="coaches_title">KIDS PROGRAMS &<br>COACHES.</h2>
+    <div style="display: flex; flex-direction: column; gap: 4rem;">
+      <div class="glass-card" style="padding: 2.5rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;">
+        <div style="flex: 1; min-width: 280px;">
+          <h3 class="shiny-title dark" style="font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--ink); margin-bottom: 1rem;" data-i18n="coaches_schedule_title">Age Groups & Schedule</h3>
+          <p style="color: var(--ink-faint); margin-bottom: 1rem;" data-i18n="coaches_schedule_desc">Our clinics run every weekend, tailored specifically for different age groups to ensure maximum engagement and appropriate skill building.</p>
+          <ul style="color: var(--ink); list-style: none; padding: 0; line-height: 2;">
+            <li data-i18n="age_6_8"><strong>Ages 6 - 8:</strong> Sat & Sun • 9:00 AM - 10:30 AM</li>
+            <li data-i18n="age_9_11"><strong>Ages 9 - 11:</strong> Sat & Sun • 11:00 AM - 12:30 PM</li>
+            <li data-i18n="age_12_14"><strong>Ages 12 - 14:</strong> Sat & Sun • 1:00 PM - 2:30 PM</li>
+          </ul>
+        </div>
+        <div style="flex: 1; min-width: 280px; display: flex; justify-content: flex-end;">
+           <button class="btn-dark-lg" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" data-i18n="coaches_register">Register for Next Session →</button>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="shiny-title dark" style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 2rem;" data-i18n="coaches_meet_title">Meet The Coaches</h3>
+        <div class="grid-auto">
+          <div class="glass-card" style="padding: 2rem; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem auto; border: 2px solid #ea580c;">
+               <img src="/ali.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Coach Ali"/>
+            </div>
+            <h4 style="color: var(--ink); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem;" data-i18n="coach_ali_name">Coach Ali</h4>
+            <p style="color: #ea580c; font-size: 0.9rem; font-weight: bold; margin-bottom: 1rem;" data-i18n="coach_ali_role">Head of Youth Development</p>
+            <p style="color: var(--ink-faint); font-size: 0.95rem; line-height: 1.5;" data-i18n="coach_ali_bio">Former collegiate guard with extensive experience coaching youth leagues, specializing in offensive fundamentals, spacing, and playmaking.</p>
+          </div>
+          <div class="glass-card" style="padding: 2rem; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem auto; border: 2px solid #ea580c;">
+               <img src="/nate.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Coach Nate"/>
+            </div>
+            <h4 style="color: var(--ink); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+              <span data-i18n="coach_nate_name">Coach Nate</span>
+              <a href="https://www.instagram.com/bwoystar/" target="_blank" rel="noopener" style="color: #ea580c; display: inline-flex; align-items: center; transition: opacity 0.2s, transform 0.2s; will-change: transform;" onmouseover="this.style.opacity=0.85; this.style.transform='scale(1.12)';" onmouseout="this.style.opacity=1; this.style.transform='scale(1)';" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+              </a>
+            </h4>
+            <p style="color: #ea580c; font-size: 0.9rem; font-weight: bold; margin-bottom: 1rem;" data-i18n="coach_nate_role">Elite Skills Trainer</p>
+            <p style="color: var(--ink-faint); font-size: 0.95rem; line-height: 1.5;" data-i18n="coach_nate_bio">Dynamic youth coach specializing in advanced ball handling, footwork, and game situational drills for all age levels.</p>
+          </div>
+          <div class="glass-card" style="padding: 2rem; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem auto; border: 2px solid #ea580c;">
+               <img src="/zazu.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Coach Zazu"/>
+            </div>
+            <h4 style="color: var(--ink); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem;" data-i18n="coach_zazu_name">Coach Zazu</h4>
+            <p style="color: #ea580c; font-size: 0.9rem; font-weight: bold; margin-bottom: 1rem;" data-i18n="coach_zazu_role">Lead Skills Coordinator</p>
+            <p style="color: var(--ink-faint); font-size: 0.95rem; line-height: 1.5;" data-i18n="coach_zazu_bio">Dedicated trainer focusing on athletic coordination, defensive mechanics, and team strategy to prepare kids for competitive play.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- GOOGLE REVIEWS -->
+  <section id="testimonials-section" class="reviews-section">
+    <!-- Header -->
+    <div class="reviews-header">
+      <p class="eyebrow reveal-blur">GOOGLE REVIEWS</p>
+      <h2 class="section-headline shiny-title dark reveal-blur">WHAT THE<br>COMMUNITY SAYS.</h2>
+      <div class="reviews-aggregate reveal-blur">
+        <div class="reviews-google-logo">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <span class="reviews-google-text">Google Reviews</span>
+        </div>
+        <div class="reviews-score">
+          <div class="reviews-stars-row">★★★★<span style="opacity:0.35">★</span></div>
+          <span class="reviews-count">61 reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 1 — scrolls left -->
+    <div class="reviews-track-wrap reviews-fade-mask">
+      <div class="reviews-track" id="reviews-track-1">
+        <!-- 20 cards, duplicated for seamless loop -->
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Great place, even better ppl that are running the place, thanks for making my daughters day AllBall"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">V</span><span>Von Villa</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Good place plus prices are cheap for the amount of time and the shooting machine is really good"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#f59e0b)">M</span><span>Matthias Becerra</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Great place very family friendly and open to kids and adults of all levels"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">D</span><span>Dave Owers</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Wonderfull team thx a lot for taking care of our youths"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#10b981,#14b8a6)">A</span><span>Amine Elbak</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Really great place with nice owners! Had a birthday party there and my son regularly goes to play. Great place for kids to stay active!"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#ec4899,#ef4444)">S</span><span>Sarah Groom</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Unique spot, inspiring wall quotes, a good spot to let your children get into the basketball culture, get one on one customized training &amp; much more, that this place has to offer."</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#a78bfa,#f9a8d4)">U</span><span>Umer Naeem</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Good atmosphere for training"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#fb923c,#fbbf24)">A</span><span>Ali Lavasani</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"One of the best private places to go too. If you are new to Montréal, I suggest going there if you want to play basketball with a group. The staff are super nice and very professional."</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#34d399,#60a5fa)">M</span><span>Malcolm Phillips</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Nice little indoor gym, very accommodating owners and enjoyed my time over there"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">Z</span><span>Zubair Tai</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Awesome place to run 3's and 4's. Great hospitality from Baba and Zazou."</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#7c3aed)">S</span><span>Samir Tarazi</span></div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Great place, even better ppl that are running the place, thanks for making my daughters day AllBall"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">V</span><span>Von Villa</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Good place plus prices are cheap for the amount of time and the shooting machine is really good"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#f59e0b)">M</span><span>Matthias Becerra</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Great place very family friendly and open to kids and adults of all levels"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">D</span><span>Dave Owers</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Wonderfull team thx a lot for taking care of our youths"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#10b981,#14b8a6)">A</span><span>Amine Elbak</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Really great place with nice owners! Had a birthday party there and my son regularly goes to play. Great place for kids to stay active!"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#ec4899,#ef4444)">S</span><span>Sarah Groom</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Unique spot, inspiring wall quotes, a good spot to let your children get into the basketball culture, get one on one customized training &amp; much more."</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#a78bfa,#f9a8d4)">U</span><span>Umer Naeem</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Good atmosphere for training"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#fb923c,#fbbf24)">A</span><span>Ali Lavasani</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"One of the best private places to go too. The staff are super nice and very professional."</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#34d399,#60a5fa)">M</span><span>Malcolm Phillips</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Nice little indoor gym, very accommodating owners and enjoyed my time over there"</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">Z</span><span>Zubair Tai</span></div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-text">"Awesome place to run 3's and 4's. Great hospitality from Baba and Zazou."</p>
+          <div class="rv-author"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#7c3aed)">S</span><span>Samir Tarazi</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 — scrolls right -->
+    <div class="reviews-track-wrap reviews-fade-mask" style="margin-top: 1.5rem;">
+      <div class="reviews-track reviews-track-reverse" id="reviews-track-2">
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great facility! I highly recommend for every basketball player that wants to make it to the next level!"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#f59e0b)">M</span><span>Marvin Golding</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"All ball is a phenomenal place to ball. Hard working, welcoming and knowledgeable staff/coaches. Very clean facilities and lots of room to practice."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">R</span><span>Rob Drury</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Very nice initiative. High quality trainers and equipment. This center of excellence needs to be supported by all. Good luck. Bravo !"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#10b981,#4f46e5)">T</span><span>Tapha Mané</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"The coaches love basketball and are great at communicating &amp; teaching the kids 🏀 highly recommended"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#ec4899,#a78bfa)">S</span><span>S Kash</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Best place to learn basketball. The two coaches are great with the kids. A place where children and teenagers feel welcome!"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#f472b6,#f59e0b)">G</span><span>Geneviève Chan</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great place to hoop. Great place. Great service."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#ef4444)">Y</span><span>Yazan Darwish</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great place to play ball"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#34d399,#3b82f6)">M</span><span>Marcus Knott</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Excellent"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">D</span><span>Danny Di Cenzo</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great experience."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#fb923c,#ec4899)">A</span><span>Asim Sheikh</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great place 👍"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#4f46e5,#f472b6)">R</span><span>Rakib Chowdhury</span></div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great facility! I highly recommend for every basketball player that wants to make it to the next level!"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#f59e0b)">M</span><span>Marvin Golding</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"All ball is a phenomenal place to ball. Hard working, welcoming and knowledgeable staff/coaches."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">R</span><span>Rob Drury</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Very nice initiative. High quality trainers and equipment. This center of excellence needs to be supported by all."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#10b981,#4f46e5)">T</span><span>Tapha Mané</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"The coaches love basketball and are great at communicating &amp; teaching the kids 🏀 highly recommended"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#ec4899,#a78bfa)">S</span><span>S Kash</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Best place to learn basketball. The two coaches are great with the kids."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#f472b6,#f59e0b)">G</span><span>Geneviève Chan</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great place. Great service."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#ea580c,#ef4444)">Y</span><span>Yazan Darwish</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great place to play ball"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#34d399,#3b82f6)">M</span><span>Marcus Knott</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Excellent"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">D</span><span>Danny Di Cenzo</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great experience."</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#fb923c,#ec4899)">A</span><span>Asim Sheikh</span></div>
+        </div>
+        <div class="rv-card rv-card-dark">
+          <div class="rv-stars rv-stars-light">★★★★★</div>
+          <p class="rv-text rv-text-light">"Great place 👍"</p>
+          <div class="rv-author rv-author-light"><span class="rv-avatar" style="background:linear-gradient(135deg,#4f46e5,#f472b6)">R</span><span>Rakib Chowdhury</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact-section">
+    <div class="new-section" style="position: relative; z-index: 10;">
+      <p class="eyebrow reveal-blur" style="text-align: center;" data-i18n="contact_eyebrow">GET IN TOUCH</p>
+      <h2 class="section-headline shiny-title dark reveal-blur" style="text-align: center; margin-bottom: 2rem;" data-i18n="contact_title">BOOK A COURT<br>OR INQUIRE.</h2>
+      <p class="section-body reveal-blur" style="text-align: center; max-width: 600px; margin: 0 auto 3rem auto;" data-i18n="contact_body">Ready to play? Fill out the form below and our team will get back to you shortly to confirm your booking.</p>
+      
+      <div class="glass-card" style="padding: 3rem 2rem; max-width: 700px; margin: 0 auto; position: relative; z-index: 10;">
+        <form id="contact-form" class="contact-form" onsubmit="submitForm(event)">
+          <!-- Next configuration (disable captcha, set redirect page back to same, or leave it) -->
+          <input type="hidden" name="_subject" value="New Inquiry from Centre AllBall Website!">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; width: 100%;">
+            <div style="display: flex; flex-direction: column;">
+              <label class="contact-label" data-i18n="contact_label_name">Full Name</label>
+              <input type="text" name="Name" class="contact-input" placeholder="Full Name" data-i18n-placeholder="contact_placeholder_name" required />
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <label class="contact-label" data-i18n="contact_label_phone">Phone Number</label>
+              <input type="tel" name="Phone" class="contact-input" placeholder="Phone Number" data-i18n-placeholder="contact_placeholder_phone" required />
+            </div>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; text-align: left; width: 100%;">
+            <label class="contact-label" data-i18n="contact_label_email">Email Address</label>
+            <input type="email" name="Email" class="contact-input" placeholder="Email Address" data-i18n-placeholder="contact_placeholder_email" required />
+          </div>
+          
+          <div style="display: flex; flex-direction: column; text-align: left; width: 100%;">
+            <label class="contact-label" data-i18n="contact_label_type">Type of Event / Purpose</label>
+            <select name="Event_Type" class="contact-input contact-select" required>
+              <option value="" disabled selected data-i18n="contact_option_default">Type of Event / Purpose</option>
+              <option value="Court Rental" data-i18n="contact_option_rental">Court Rental</option>
+              <option value="Kids Clinic Registration" data-i18n="contact_option_clinic">Kids Clinic Registration</option>
+              <option value="Birthday Party Inquiry" data-i18n="contact_option_party">Birthday Party Inquiry</option>
+              <option value="Private Training" data-i18n="contact_option_private">Private Training</option>
+              <option value="General Question" data-i18n="contact_option_general">General Question</option>
+            </select>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; text-align: left; width: 100%;">
+            <label class="contact-label" data-i18n="contact_label_comments">Additional Comments (Optional)</label>
+            <textarea name="Comments" class="contact-input" placeholder="Additional Comments (Optional)" data-i18n-placeholder="contact_placeholder_comments" rows="4"></textarea>
+          </div>
+          
+          <button id="submit-btn" type="submit" class="btn-dark-lg" style="margin-top: 1rem; width: 100%;" data-i18n="contact_submit">Submit Inquiry →</button>
+          <p id="submit-msg" style="color: #ea580c; display: none; text-align: center; margin-top: 1rem;"></p>
+        </form>
+
+        <script>
+          function submitForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('submit-btn');
+            const msg = document.getElementById('submit-msg');
+            
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch("https://formsubmit.co/ajax/info@centreallball.ca", {
+                method: "POST",
+                headers: { 
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    msg.innerText = "Thanks! Your inquiry has been sent.";
+                    msg.style.color = "#16a34a"; // Green for success
+                    msg.style.display = "block";
+                    form.reset();
+                } else {
+                    msg.innerText = "Please check your email to activate the form first! (FormSubmit requirement)";
+                    msg.style.color = "#ea580c";
+                    msg.style.display = "block";
+                }
+                btn.innerText = 'Submit Inquiry →';
+                btn.disabled = false;
+            })
+            .catch(error => {
+                msg.innerText = "There was an error sending the form. Please try again.";
+                msg.style.display = "block";
+                btn.innerText = 'Submit Inquiry →';
+                btn.disabled = false;
+            });
+          }
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS & HOURS -->
+  <section id="location-section" style="background: rgba(0,0,0,0.02); border-top: 1px solid rgba(0,0,0,0.05); padding-bottom: 6rem;">
+    <div class="new-section">
+      <p class="eyebrow reveal-blur" style="text-align:center;">VISIT US</p>
+      <h2 class="section-headline shiny-title dark reveal-blur" style="text-align:center; margin-bottom: 3rem;">OUR<br>LOCATIONS.</h2>
+
+      <!-- Hours shared -->
+      <div class="glass-card" style="padding: 1.5rem 2rem; max-width: 700px; margin: 0 auto 3rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;">
+        <div>
+          <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.5rem;">STANDARD HOURS</p>
+          <ul style="color: var(--ink-muted); list-style: none; padding: 0; line-height: 1.9; font-size: 0.88rem;">
+            <li style="display:flex; gap: 1.5rem;"><span style="min-width:90px;">Mon – Thu</span><span style="color:var(--ink); font-weight:500;">9 a.m. – 12 a.m.</span></li>
+            <li style="display:flex; gap: 1.5rem;"><span style="min-width:90px;">Friday</span><span style="color:var(--ink); font-weight:500;">11:30 a.m. – 3 a.m.</span></li>
+            <li style="display:flex; gap: 1.5rem;"><span style="min-width:90px;">Saturday</span><span style="color:var(--ink); font-weight:500;">10:30 a.m. – 2:15 a.m.</span></li>
+            <li style="display:flex; gap: 1.5rem;"><span style="min-width:90px;">Sunday</span><span style="color:var(--ink); font-weight:500;">9 a.m. – 12 a.m.</span></li>
+          </ul>
+        </div>
+        <a href="tel:+15145185061" class="btn-dark-lg" style="white-space:nowrap;">📞 Call Us</a>
+      </div>
+
+      <!-- Two location cards + maps -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+
+        <!-- Location 1 -->
+        <div class="glass-card" style="padding: 0; overflow: hidden; border-radius: 1.5rem;">
+          <div style="height: 280px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.815777839634!2d-73.8687796!3d45.4287413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc93c048bc95c73%3A0xe5a3c0320bb02581!2s3280%20Rue%20Jean-Yves%2C%20Kirkland%2C%20QC%20H9J%202R6!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" width="100%" height="100%" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div style="padding: 1.5rem 1.75rem;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+              <span style="background:#ea580c; color:white; font-size:0.65rem; font-weight:700; letter-spacing:2px; padding:3px 10px; border-radius:999px;">LOCATION 1</span>
+            </div>
+            <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--ink); line-height:1; margin-bottom:0.5rem;">Kirkland</h3>
+            <p style="color:var(--ink-faint); font-size:0.88rem; line-height:1.6; margin-bottom:1rem;">3280 Jean Yves St<br>Montreal, Quebec H9J 4C1</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=3280+Jean+Yves+St+Montreal+Quebec+H9J+4C1" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex; font-size:0.8rem;">Get Directions →</a>
+          </div>
+        </div>
+
+        <!-- Location 2 -->
+        <div class="glass-card" style="padding: 0; overflow: hidden; border-radius: 1.5rem;">
+          <div style="height: 280px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2790.5!2d-74.0290!3d45.3990!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc93a!2s3660+Boul+de+la+Cite-des-Jeunes+Vaudreuil-Dorion!5e0!3m2!1sen!2sca!4v1700000000001!5m2!1sen!2sca" width="100%" height="100%" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div style="padding: 1.5rem 1.75rem;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+              <span style="background:#ea580c; color:white; font-size:0.65rem; font-weight:700; letter-spacing:2px; padding:3px 10px; border-radius:999px;">LOCATION 2</span>
+              <span style="background:rgba(34,197,94,0.15); color:#16a34a; font-size:0.65rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:999px;">NEW</span>
+            </div>
+            <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--ink); line-height:1; margin-bottom:0.5rem;">Vaudreuil-Dorion</h3>
+            <p style="color:var(--ink-faint); font-size:0.88rem; line-height:1.6; margin-bottom:1rem;">3660 Boul de la Cité-des-Jeunes<br>Vaudreuil-Dorion, QC J7V 8P2<br><span style="color:var(--ink); font-weight:500;">Unit 103 (in the back)</span></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=3660+Boul+de+la+Cite-des-Jeunes+Vaudreuil-Dorion+QC+J7V+8P2" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex; font-size:0.8rem;">Get Directions →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq-section" class="new-section">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p class="eyebrow reveal-blur" style="text-align: center;" data-i18n="faq_eyebrow">HAVE QUESTIONS?</p>
+      <h2 class="section-headline shiny-title dark reveal-blur" style="text-align: center; margin-bottom: 4rem;" data-i18n="faq_title">FAQ.</h2>
+      <div class="faq-list">
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-q" data-i18n="faq1_q">Do I need to book in advance for drop-in? <span class="faq-icon">+</span></div>
+          <div class="faq-a" data-i18n="faq1_a">While walk-ins are welcome, we highly recommend booking your pass online to guarantee entry, as we frequently reach capacity on weekends.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-q" data-i18n="faq2_q">What age are the kids clinics for? <span class="faq-icon">+</span></div>
+          <div class="faq-a" data-i18n="faq2_a">Our weekend clinics are separated by age groups: 6-8, 9-11, and 12-14. We adjust the hoop height and basketball sizes accordingly.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-q" data-i18n="faq3_q">Can we bring outside food for birthday parties? <span class="faq-icon">+</span></div>
+          <div class="faq-a" data-i18n="faq3_a">Yes! You are welcome to bring your own cake and snacks for the party room. We also offer catering add-ons if you prefer us to handle the pizza and drinks.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-q" data-i18n="faq4_q">Are basketballs provided? <span class="faq-icon">+</span></div>
+          <div class="faq-a" data-i18n="faq4_a">We provide basketballs for all clinics and parties. For drop-in play or court rentals, we ask that you bring your own, though we do have limited rentals available at the front desk.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-bg-ball"></div>
+    <div class="footer-inner">
+
+      <!-- Footer top -->
+      <div class="footer-top">
+
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo" style="display: flex; align-items: center; gap: 12px;">
+            <img class="footer-logo-img" src="/logo.png" alt="ALLBALL Logo" style="height: 80px; width: auto; object-fit: contain; display: block;" />
+            ALLBALL
+          </div>
+          <p class="footer-tagline">Montreal's finest sports complex for youth basketball training and development.</p>
+          <div class="footer-socials" style="display: flex; gap: 10px; margin-top: 1rem;">
+            <a href="https://www.facebook.com/allballmtl" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/allballmtl/" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@allballmtl" target="_blank" rel="noopener" class="footer-social-btn" aria-label="TikTok">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89h.6V9.12h-.6a6.33 6.33 0 1 0 6.33 6.33V7.94a7.92 7.92 0 0 0 4.47 1.33V5.65a4.83 4.83 0 0 1-0.65-0.05z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Links -->
+        <div class="footer-links-grid">
+          <div class="footer-link-col">
+            <span class="footer-col-title" data-i18n="footer_col1_title">Programs</span>
+            <a href="#" data-i18n="footer_col1_link1">Youth Training</a>
+            <a href="#" data-i18n="footer_col1_link2">Summer Camps</a>
+            <a href="#" data-i18n="footer_col1_link3">Private Coaching</a>
+            <a href="#" data-i18n="footer_col1_link4">Court Rentals</a>
+          </div>
+          <div class="footer-link-col">
+            <span class="footer-col-title" data-i18n="footer_col2_title">About Us</span>
+            <a href="#" data-i18n="footer_col2_link1">Our Coaches</a>
+            <a href="#" data-i18n="footer_col2_link2">Facility Info</a>
+            <a href="#" data-i18n="footer_col2_link3">Testimonials</a>
+            <a href="#" data-i18n="footer_col2_link4">Careers</a>
+          </div>
+          <div class="footer-link-col">
+            <span class="footer-col-title" data-i18n="footer_col3_title">Contact</span>
+            <a href="#" data-i18n="footer_col3_link1">Directions</a>
+            <a href="#" data-i18n="footer_col3_link2">Email Us</a>
+            <a href="#" data-i18n="footer_col3_link3">Call Center</a>
+            <a href="#" data-i18n="footer_col3_link4">FAQ</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <span data-i18n="footer_copyright">© 2026 Centre AllBall. All rights reserved.</span>
+          <span class="footer-legal">
+            <a href="#" data-i18n="footer_legal_privacy">Privacy</a> · <a href="#" data-i18n="footer_legal_terms">Terms</a> · <a href="#" data-i18n="footer_legal_cookies">Cookies</a>
+          </span>
+        </div>
+
+        <div class="footer-signature-wrap">
+          <a href="https://www.instagram.com/ys.sites/" target="_blank" rel="noopener" class="ys-signature-btn">
+            <img src="/YS.png" alt="YS Logo" class="ys-sig-logo" />
+            <span class="ys-sig-text">
+              Made by <strong class="ys-sig-highlight">YS Marketing Solutions</strong> <span class="ys-sig-divider">|</span> Marketing Agency
+            </span>
+          </a>
+        </div>
+
+        <div class="footer-ticker-wrap">
+          <div class="footer-ticker">
+            <span>MONTREAL · WEST ISLAND · DOLLARD-DES-ORMEAUX · POINTE-CLAIRE · </span>
+            <span>MONTREAL · WEST ISLAND · DOLLARD-DES-ORMEAUX · POINTE-CLAIRE · </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- Sticky CTA Bar -->
+  <div class="sticky-cta-bar glass-dark" style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem; z-index: 100; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div style="display: flex; flex-direction: column;">
+      <span style="color: white; font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; line-height: 1;" data-i18n="sticky_cta_title">CENTRE ALLBALL</span>
+      <span style="color: var(--ink-faint); font-size: 0.8rem;" data-i18n="sticky_cta_subtitle">Montreal's Premier Court</span>
+    </div>
+    <button class="btn-dark-sm" style="background: #ea580c; color: white;" data-i18n="sticky_cta_btn" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})">Book Now →</button>
+  </div>
+</body>
+</html>

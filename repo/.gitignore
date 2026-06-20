@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env*.local
+web_essentials.sop
+public/taste-skill-main/
+
