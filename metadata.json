@@ -1,8 +1,6 @@
 {
-  "name": "LURA Bidet",
-  "description": "LURA bidet personal-care landing page: a premium elegant e-commerce experience with interactive cart features, design specifications, code discount builders, and 15-minute quick setup guides.",
+  "name": "SimpliiGood Website",
+  "description": "SimpliiGood — fresh-frozen spirulina website. The clean, easy, and potent way to get your greens and micronutrients.",
   "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -1,8 +1,21 @@
+# Dependencies
 node_modules/
-build/
-dist/
-coverage/
+
+# macOS
 .DS_Store
+
+# Logs
 *.log
-.env*
-!.env.example
+npm-debug.log*
+
+# Editor/OS
+.vscode/
+*.swp
+
+# Build output (Vercel builds this)
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local

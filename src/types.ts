@@ -1,25 +1,41 @@
+export interface ColorOption {
+  name: string;
+  hex: string;
+}
+
 export interface Product {
   id: string;
   name: string;
-  tagline: string;
-  type: 'attachment' | 'seat' | 'handheld';
   price: number;
   originalPrice?: number;
-  rating: number;
-  reviewsCount: number;
-  image: string;
-  features: string[];
   description: string;
-  wittyFact: string; // The trademark confident, witty bidet facts (Tushy-style)
-  inStock: boolean;
-  colorOptions?: { name: string; hex: string }[];
+  features: string[];
+  image: string;
+  tag?: string;
+  category?: 'attachment' | 'seat' | 'handheld' | 'accessory';
+  tagline?: string;
+  type?: 'attachment' | 'seat' | 'handheld' | 'accessory';
+  rating?: number;
+  reviewsCount?: number;
+  wittyFact?: string;
+  inStock?: boolean;
+  colorOptions?: ColorOption[];
 }
 
 export interface CartItem {
   product: Product;
   quantity: number;
-  selectedColor?: string;
-  selectedToiletShape?: 'round' | 'elongated';
+  selectedOptions: {
+    shape?: 'Round' | 'Elongated';
+    finish?: 'Chrome' | 'Brushed Steel' | 'Matte Black' | 'Alpine White';
+    waterType?: 'Ambient Only' | 'Dual Temp (Warm & Cold)';
+  };
+}
+
+export interface DiscountCode {
+  code: string;
+  discountType: 'percentage' | 'fixed';
+  value: number;
 }
 
 export interface Review {
