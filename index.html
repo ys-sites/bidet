@@ -425,6 +425,25 @@ html, body { margin: 0; padding: 0; overflow-x: hidden; width: 100%; }
   border-radius: 1rem !important;
 }
 
+/* --- Overview V4 Image: scroll-triggered fade-up animation --- */
+.rt-overview-v4-image-wrap {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.rt-overview-v4-image-wrap.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.rt-overview-v4-image-wrap.animate-in img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rt-overview-v4-image-wrap.animate-in:hover img {
+  transform: scale(1.04);
+}
+
 /* --- Main Video Section: full-width with proper height, iframe fix --- */
 .rt-main-video { position: relative !important; }
 .rt-main-video-wrapper {
@@ -1155,6 +1174,20 @@ document.addEventListener("DOMContentLoaded", () => {
       col.style.transitionDelay = `${index * 0.15}s`;
       showcaseObserver.observe(col);
     });
+  }
+
+  // Overview V4 image: fade-up animation on scroll
+  const overviewImg = document.querySelector(".rt-overview-v4-image-wrap");
+  if (overviewImg) {
+    const imgObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in");
+          imgObserver.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: "0px", threshold: 0.15 });
+    imgObserver.observe(overviewImg);
   }
 });
 </script>
