@@ -1,180 +1,82 @@
 import { createRoot } from "react-dom/client";
 import "./kamu.css";
-import { BidetShop } from "./components/BidetShop";
-import { Sparkles, Droplet, Flame, Compass, ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { IdentityCardBody, RevealCardContainer, type SocialItem } from "@/components/identity-card";
 
-// 1. Core Setup for Universal LURA Ecommerce
-const globalRootId = "lura-ecommerce-global-root";
-let globalRoot = document.getElementById(globalRootId);
-
-if (!globalRoot) {
-  globalRoot = document.createElement("div");
-  globalRoot.id = globalRootId;
-  document.body.appendChild(globalRoot);
-}
-
-// Render the checkout and floating shopping cart globally on all pages!
-createRoot(globalRoot).render(<BidetShop />);
-
-// 2. Interactive Product Customizer Row for the Technology page
-const techProducts = [
+const socials: SocialItem[] = [
   {
-    id: "lura-classic",
-    name: "LURA Classic Attachment",
-    price: 79,
-    originalPrice: 99,
-    image: "without logo.webp",
-    badge: "Most Popular",
-    headline: "Unpowered Hydro-Fusion",
-    description: "Elegant mechanical attachment featuring our slim 0.2\" body, tactile steel valves, and self-cleaning natural water pressure nozzles.",
-    icon: <Droplet className="w-6 h-6 text-[#199464]" />,
-    specs: ["Retractable dual nozzles", "Tactile brass core dial", "99.9% universal toilet fit", "Dual nozzle posterior/feminine"]
+    id: "linkedin",
+    url: "https://www.linkedin.com/",
+    label: "LinkedIn",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.07c.63-1.2 2.17-2.46 4.46-2.46C21.4 7.74 24 10 24 14.6V24h-5v-8.3c0-2-.04-4.57-2.78-4.57-2.78 0-3.21 2.17-3.21 4.42V24h-5V8z" />
+      </svg>
+    ),
   },
   {
-    id: "lura-aero",
-    name: "LURA Aero Smart Seat",
-    price: 349,
-    originalPrice: 429,
-    image: "Fix Mistake.webp",
-    badge: "Smart Premium Selection",
-    headline: "Full Electronic Luxury",
-    description: "Uncompromised bliss. Instant heated water, 5-speed adjustable dryer, warm ergonomic heated seat, and soft nightglow wash guides.",
-    icon: <Flame className="w-6 h-6 text-amber-500" />,
-    specs: ["Ergonomic heated seating", "Endless instant warm water", "Adjustable drying temp", "Ultra-safe electronic fuses"]
+    id: "x",
+    url: "https://x.com/",
+    label: "X",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.9 1.5h3.7l-8 9.2L24 22.5h-7.4l-5.8-7.6-6.6 7.6H.5l8.6-9.8L0 1.5h7.6l5.2 6.9 6.1-6.9zm-1.3 18.8h2L6.5 3.6H4.4l13.2 16.7z" />
+      </svg>
+    ),
   },
-  {
-    id: "lura-wand",
-    name: "LURA Handheld Sprayer",
-    price: 49,
-    image: "Form_section.webp",
-    badge: "Minimalist Utility",
-    headline: "Surgical Weight Balance",
-    description: "Solid brass heavy-grade handheld sprayer offering continuous thumb pressure moderation and instant magnetic holster docking.",
-    icon: <Compass className="w-6 h-6 text-sky-500" />,
-    specs: ["Machined solid copper brass", "Squeeze trigger moderation", "Double lock high fatigue hose", "Premium wall dock mount"]
-  }
 ];
 
-const bidetOnPageRoot = document.getElementById("kamu-root");
-if (bidetOnPageRoot) {
-  // Clear any placeholder plain HTML inside (just to be safe)
-  bidetOnPageRoot.innerHTML = "";
-  
-  createRoot(bidetOnPageRoot).render(
-    <div className="w-full space-y-12 py-6 font-sans">
-      <div className="text-center space-y-3">
-        <span className="text-[11px] font-black tracking-widest text-[#199464] uppercase bg-[#199464]/10 px-4 py-1.5 rounded-full">
-          EXPERIENCE LURA LUXURY
-        </span>
-        <h3 className="text-3xl md:text-4xl font-extrabold text-[#154048] tracking-tight">
-          Select Your Premium Wash Chassis
-        </h3>
-        <p className="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
-          Upgrade your hygiene regime by custom-configuring one of our signature LURA systems. All units are fully HSA/FSA reimbursable.
-        </p>
-      </div>
+// --- Card content. Card 2 (Kamu) is real; cards 1 & 3 are PLACEHOLDERS — replace name/role/bio/avatar. ---
+const people = [
+  {
+    fullName: "Maya Chen", // PLACEHOLDER
+    place: "Founder & CEO",
+    about:
+      "On a mission to make plant-based seafood indistinguishable from the ocean's best — sustainable, clean, and made entirely from spirulina.",
+    avatarUrl: "/og-image.jpg",
+    avatarText: "M",
+  },
+  {
+    fullName: "Kamu",
+    place: "Head of Food Technology",
+    about:
+      "Pioneering proprietary spirulina texture technology — building plant-based seafood that looks, tastes, and flakes like the real thing, made entirely from algae.",
+    avatarUrl: "/og-image.jpg",
+    avatarText: "K",
+  },
+  {
+    fullName: "Daniel Roth", // PLACEHOLDER
+    place: "Head of R&D",
+    about:
+      "Leads the science behind our flash-frozen spirulina and texture engineering, turning nutrient-dense microalgae into craveable everyday food.",
+    avatarUrl: "/og-image.jpg",
+    avatarText: "D",
+  },
+];
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-        {techProducts.map((p) => (
-          <div 
-            key={p.id}
-            className="group relative bg-[#FAF9F5]/40 border border-black/5 hover:border-[#154048]/30 rounded-[2rem] p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:bg-white overflow-hidden transform hover:-translate-y-1"
-          >
-            {/* Top row */}
-            <div className="space-y-4">
-              <div className="flex justify-between items-start">
-                <div className="p-3 bg-white border border-black/5 rounded-2xl group-hover:bg-[#154048] group-hover:text-white transition duration-300">
-                  {p.icon}
-                </div>
-                <span className="text-[9px] font-black tracking-wider text-[#199464] uppercase bg-[#199464]/5 px-2.5 py-1 rounded-md border border-[#199464]/10">
-                  {p.badge}
-                </span>
-              </div>
-
-              <div className="space-y-1.5">
-                <span className="text-[11px] font-black tracking-widest text-gray-400 uppercase">{p.headline}</span>
-                <h4 className="text-xl font-extrabold text-[#154048] tracking-tight group-hover:text-[#199464] transition">
-                  {p.name}
-                </h4>
-                <p className="text-xs text-gray-500 leading-relaxed min-h-[50px]">
-                  {p.description}
-                </p>
-              </div>
-
-              {/* Specs checklist */}
-              <div className="pt-3 border-t border-black/5 space-y-2">
-                <p className="text-[10px] font-black tracking-widest text-gray-400 uppercase">Highlights & Components</p>
-                <div className="space-y-1.5 text-xs text-[#154048]/85">
-                  {p.specs.map((spec, sIdx) => (
-                    <div key={sIdx} className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-[#199464] shrink-0" />
-                      <span>{spec}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom pricing row */}
-            <div className="pt-6 mt-6 border-t border-black/5 flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-bold text-gray-400 block uppercase">Instant Offer</span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-[#154048]">${p.price}</span>
-                  {p.originalPrice && (
-                    <span className="text-xs text-gray-400 line-through font-semibold">${p.originalPrice}</span>
-                  )}
-                </div>
-              </div>
-
-              <button 
-                onClick={() => {
-                  // Dispatch custom event to trigger customizer in global BidetShop
-                  const productObj = {
-                    id: p.id,
-                    name: p.name,
-                    price: p.price,
-                    originalPrice: p.originalPrice,
-                    description: p.description,
-                    features: p.specs,
-                    image: p.image,
-                    category: p.id.includes("seat") ? "seat" : p.id.includes("wand") ? "handheld" : "attachment"
-                  };
-                  window.dispatchEvent(new CustomEvent("lura:open-customize", { detail: productObj }));
-                }}
-                className="px-4.5 py-3 bg-[#154048] hover:bg-[#199464] text-white text-[11px] font-black uppercase tracking-wider rounded-xl transition flex items-center gap-1 group/btn cursor-pointer shadow-sm select-none"
-              >
-                Configure <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition" />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Embedded Health FSA strip inside card row */}
-      <div className="p-5 bg-[#FAF9F5] rounded-[1.5rem] border border-black/5 flex flex-col md:flex-row items-center gap-4 justify-between font-sans">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-[#199464]/10 rounded-xl text-[#199464]">
-            <Zap className="w-5 h-5 fill-current" />
-          </div>
-          <div className="space-y-0.5">
-            <h5 className="text-xs font-bold text-[#154048] uppercase tracking-wider">HSA / FSA Direct Coverage</h5>
-            <p className="text-[11px] text-gray-500">LURA washing apparatus catalog meets exact requirements of Section 213(d) Health Care expenses.</p>
-          </div>
-        </div>
-        <a 
-          href="#pricing"
-          onClick={(e) => {
-            e.preventDefault();
-            // Open default Classic
-            const p = techProducts[0];
-            window.dispatchEvent(new CustomEvent("lura:open-customize", { detail: p }));
-          }}
-          className="text-[11px] font-black tracking-widest uppercase text-[#199464] hover:text-[#154048] flex items-center gap-1.5 transition"
-        >
-          Check Eligibility <ArrowRight className="w-3.5 h-3.5" />
-        </a>
-      </div>
+const mount = document.getElementById("kamu-root");
+if (mount) {
+  createRoot(mount).render(
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "1.5rem",
+        justifyContent: "center",
+        alignItems: "stretch",
+        width: "100%",
+      }}
+    >
+      {people.map((p, i) => (
+        <RevealCardContainer
+          key={i}
+          className="kamu-card"
+          accent="#154048"
+          textOnAccent="#ffffff"
+          mutedOnAccent="rgba(255,255,255,0.8)"
+          base={<IdentityCardBody scheme="plain" socials={socials} {...p} />}
+          overlay={<IdentityCardBody scheme="accented" socials={socials} {...p} />}
+        />
+      ))}
     </div>
   );
 }

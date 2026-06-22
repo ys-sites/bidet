@@ -1,6 +1,0 @@
-{
-  "name": "SimpliiGood Website",
-  "description": "SimpliiGood — fresh-frozen spirulina website. The clean, easy, and potent way to get your greens and micronutrients.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
