@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Build output — Vercel builds this itself
+dist/
+
 # macOS
 .DS_Store
 
@@ -11,3 +14,6 @@ npm-debug.log*
 # Editor/OS
 .vscode/
 *.swp
+
+# Skill files — not needed for deployment
+skill/
