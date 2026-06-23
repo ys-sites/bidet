@@ -1332,22 +1332,23 @@ img { max-width: 100%; height: auto; display: block; }
         </div>
       </div>
     </div>
-    <div class="bideva-howitworks-img-row bideva-reveal" style="display: flex; gap: 2rem; align-items: center; width: 100%; flex-wrap: wrap;">
+    <div class="bideva-howitworks-img-row bideva-reveal" style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 2.5rem; margin-top: 3.5rem;">
       <!-- Mobile/Tablet version (Square / stacked) -->
-      <div class="bideva-install-steps-mobile beast-mode-animation" style="width: 100%; max-width: 480px;">
+      <div class="bideva-install-steps-mobile beast-mode-animation" style="width: 100%; max-width: 480px; margin: 0 auto;">
         <img src="bidet_install_steps_diagram.png" alt="Installing Bideva Bidet Steps" class="bideva-howitworks-img"/>
       </div>
       
       <!-- Laptop/Desktop version (Landscape / single row) -->
-      <div class="bideva-install-steps-desktop beast-mode-animation" style="width: 100%; max-width: 900px; display: none;">
-        <img src="bidet_install_steps_diagram_landscape.png" alt="Installing Bideva Bidet Steps Landscape" style="width: 100%; height: auto; border-radius: 1.25rem; object-fit: contain; background: #fff; border: 1px solid rgba(0,0,0,0.05);"/>
+      <div class="bideva-install-steps-desktop beast-mode-animation" style="width: 100%; max-width: 1200px; display: none; margin: 0 auto;">
+        <img src="bidet_install_steps_diagram_landscape.png" alt="Installing Bideva Bidet Steps Landscape" style="width: 100%; height: auto; border-radius: 1.5rem; object-fit: contain; background: #fff; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 15px 35px rgba(0,0,0,0.05);"/>
       </div>
 
-      <div class="bideva-install-callout" style="flex-shrink: 0;">
-        <div class="bideva-callout-num">15</div>
-        <div class="bideva-callout-text">
+      <!-- Callout block centered below the image -->
+      <div class="bideva-install-callout" style="display: flex; flex-direction: row; align-items: center; gap: 1.5rem; padding: 1.5rem 2.5rem; max-width: 400px; justify-content: center; margin: 0 auto;">
+        <div class="bideva-callout-num" style="font-size: 3.5rem; line-height: 1;">15</div>
+        <div class="bideva-callout-text" style="text-align: left;">
           <strong data-i18n="how_diy_time">minutes</strong>
-          <span data-i18n="how_diy_label">avg. DIY install time</span>
+          <span data-i18n="how_diy_label" style="display: block; margin-top: 0.1rem;">avg. DIY install time</span>
         </div>
       </div>
     </div>
